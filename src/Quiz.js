@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
@@ -11,11 +11,12 @@ const Quiz = () => {
   useEffect(() => {
     const fetchQuizData = async () => {
       try {
-        const response = await axios.get('/Uw5CrX');  // Proxy to API
-        setQuestions(response.data);
+        const response = await axios.get("/Uw5CrX"); // Proxy to API
+        console.log(response.data); // Logs the entire API response
+        setQuestions(response.data.questions); // Get the questions array from the response
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching quiz data', error);
+        console.error("Error fetching quiz data", error);
         setLoading(false);
       }
     };
@@ -43,7 +44,9 @@ const Quiz = () => {
     return (
       <div>
         <h2>Quiz Completed!</h2>
-        <p>Your score: {score} / {questions.length}</p>
+        <p>
+          Your score: {score} / {questions.length}
+        </p>
       </div>
     );
   }
@@ -56,14 +59,15 @@ const Quiz = () => {
 
   return (
     <div>
-      <h2>{currentQuestion.question}</h2>
+      <h2>{currentQuestion.description}</h2>{" "}
+      {/* Render question using 'description' */}
       <div>
         {currentQuestion.options.map((option, index) => (
           <button
             key={index}
-            onClick={() => handleAnswerClick(option.isCorrect)}
+            onClick={() => handleAnswerClick(option.is_correct)} // Handle answer check based on 'is_correct'
           >
-            {option.answer}
+            {option.description} {/* Render option using 'description' */}
           </button>
         ))}
       </div>
