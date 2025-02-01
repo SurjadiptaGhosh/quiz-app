@@ -63,9 +63,8 @@ axios.get('/Uw5CrX')
 Replace `'/Uw5CrX'` with your actual API endpoint.
 
 ## Screenshots
-(assets/image2.jpg)
-(assets/image1.jpg)
-
+![readme](assets/image2.png)
+![readme](assets/image1.png)
 ## Video Demonstration
 
 https://drive.google.com/file/d/1GVm_O7wQi5Qfr_yWgIIfV28hjPU8rGKT/view?usp=sharing
